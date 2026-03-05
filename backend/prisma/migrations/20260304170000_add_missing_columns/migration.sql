@@ -1,4 +1,8 @@
+-- AlterTable companies: add config column
+ALTER TABLE "companies" ADD COLUMN IF NOT EXISTS "config" JSONB;
+
 -- AlterTable whatsapp_sessions: add ai_enabled
+
 ALTER TABLE "whatsapp_sessions" ADD COLUMN IF NOT EXISTS "ai_enabled" BOOLEAN NOT NULL DEFAULT false;
 
 -- AlterTable users: add ai_instruction
