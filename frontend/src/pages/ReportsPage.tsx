@@ -77,7 +77,7 @@ export default function ReportsPage() {
     const load = async () => {
         try {
             setLoading(true);
-            const { data } = await api.get('/api/reports');
+            const { data } = await api.get('/reports');
             setReports(data);
         } catch { setError('Error al cargar informes'); }
         finally { setLoading(false); }
@@ -90,7 +90,7 @@ export default function ReportsPage() {
         setError('');
         setSaving(true);
         try {
-            await api.post('/api/reports', form);
+            await api.post('/reports', form);
             setShowForm(false);
             setForm(emptyForm);
             await load();
@@ -102,7 +102,7 @@ export default function ReportsPage() {
     const handleDelete = async (id: string) => {
         if (!confirm('¿Eliminar este informe?')) return;
         try {
-            await api.delete(`/api/reports/${id}`);
+            await api.delete(`/reports/${id}`);
             setSelected(null);
             await load();
         } catch { alert('Error al eliminar'); }
